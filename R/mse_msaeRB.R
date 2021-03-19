@@ -23,6 +23,34 @@
 #' @importFrom Matrix forceSymmetric
 #' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
 #' @importFrom MASS mvrnorm
+#'
+#' @examples
+#' ## load dataset
+#' data(datamsaeRB)
+#'
+#' # Compute MSE EBLUP and Ratio Benchmark
+#'
+#' ## Using parameter 'data'
+#' Fo = list(f1 = Y1 ~ X1 + X2,
+#'           f2 = Y2 ~ X1 + X2,
+#'           f3 = Y3 ~ X1 + X2)
+#' vardir = c("v1", "v12", "v13", "v2", "v23", "v3")
+#' weight = c("w1", "w2", "w3")
+#'
+#' mse_msae = est_msaeRB(Fo, vardir, weight, data = datamsaeRB)
+#'
+#' ## Without parameter 'data'
+#' Fo = list(f1 = datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2,
+#'           f2 = datamsaeRB$Y2 ~ datamsaeRB$X1 + datamsaeRB$X2,
+#'           f3 = datamsaeRB$Y3 ~ datamsaeRB$X1 + datamsaeRB$X2)
+#' vardir = datamsaeRB[, c("v1", "v12", "v13", "v2", "v23", "v3")]
+#' weight = datamsaeRB[, c("w1", "w2", "w3")]
+#'
+#' mse_msae = est_msaeRB(Fo, vardir, weight)
+#'
+#' ## Return
+#' mse_msae$pbmse.eblupRB # to see the MSE of Ratio Benchmark
+#'
 mse_msaeRB = function (formula, vardir, weight, samevar = FALSE, B = 1000, MAXITER = 100, PRECISION = 1E-04, data) {
     start_time <- Sys.time()
     r = length(formula)

@@ -14,7 +14,8 @@ BugReports: https://github.com/zendaokab/msaeRB/issues
 Suggests: 
     covr,
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
 Imports: 
     magic,
@@ -22,3 +23,4 @@ Imports:
     Matrix,
     MASS,
     stats
+Config/testthat/edition: 3

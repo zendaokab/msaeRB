@@ -51,3 +51,19 @@ This function returns a list with following objects:
 \description{
 This function gives EBLUPs ratio benchmarking based on univariate Fay-Herriot (model 1)
 }
+\examples{
+## load dataset
+data(datamsaeRB)
+
+# Compute EBLUP and Ratio Benchmark using auxiliary variables X1 and X2 for each dependent variable
+
+## Using parameter 'data'
+est_sae = est_saeRB(Y1 ~ X1 + X2, v1, w1, data = datamsaeRB)
+
+## Without parameter 'data'
+est_sae = est_saeRB(datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2, datamsaeRB$v1, datamsaeRB$w1)
+
+## Return
+est_sae$eblup$est.eblupRB # to see the Ratio Benchmark estimators
+
+}

@@ -31,9 +31,40 @@ install.packages("msaeRB")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Example for univariate:
 
 ```{r example}
 library(msaeRB)
-## basic example code
+# Using parameter 'data'
+data("datamsaeRB")
+
+# Estimation
+est_sae = est_saeRB(Y1 ~ X1 + X2, v1, w1, data = datamsaeRB)
+
+# MSE
+mse_sae = mse_saeRB(Y1 ~ X1 + X2, v1, w1, data = datamsaeRB)
+
+# Show the result of est_sae
+est_sae
 ```
+
+Example for multivariate:
+```{r}
+library(msaeRB)
+# Without parameter 'data'
+Fo = list(f1 = datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2,
+          f2 = datamsaeRB$Y2 ~ datamsaeRB$X1 + datamsaeRB$X2,
+          f3 = datamsaeRB$Y3 ~ datamsaeRB$X1 + datamsaeRB$X2)
+vardir = datamsaeRB[, c("v1", "v12", "v13", "v2", "v23", "v3")]
+weight = datamsaeRB[, c("w1", "w2", "w3")]
+
+# Estimation
+est_msae = est_msaeRB(Fo, vardir, weight)
+
+# MSE
+mse_msae = mse_msaeRB(Fo, vardir, weight)
+
+# Show the result of MSE
+mse_msae
+```
+

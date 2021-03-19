@@ -23,6 +23,22 @@
 #' @importFrom Matrix forceSymmetric
 #' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
 #' @importFrom MASS mvrnorm
+#'
+#' @examples
+#' ## load dataset
+#' data(datamsaeRB)
+#'
+#' # Compute MSE EBLUP and Ratio Benchmark
+#'
+#' ## Using parameter 'data'
+#' mse_sae = mse_saeRB(Y1 ~ X1 + X2, v1, w1, data = datamsaeRB)
+#'
+#' ## Without parameter 'data'
+#' mse_sae = mse_saeRB(datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2, datamsaeRB$v1, datamsaeRB$w1)
+#'
+#' ## Return
+#' mse_sae$pbmse.eblupRB # to see the MSE Ratio Benchmark estimators
+#'
 mse_saeRB = function(formula, vardir, weight, samevar = FALSE, B = 1000, MAXITER = 100, PRECISION = 1E-04, data) {
   start_time <- Sys.time()
   if (!is.list(formula))

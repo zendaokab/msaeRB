@@ -34,6 +34,34 @@
 #' @importFrom Matrix forceSymmetric
 #' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
 #' @importFrom MASS mvrnorm
+#'
+#' @examples
+#' ## load dataset
+#' data(datamsaeRB)
+#'
+#' # Compute EBLUP and Ratio Benchmark using auxiliary variables X1 and X2 for each dependent variable
+#'
+#' ## Using parameter 'data'
+#' Fo = list(f1 = Y1 ~ X1 + X2,
+#'           f2 = Y2 ~ X1 + X2,
+#'           f3 = Y3 ~ X1 + X2)
+#' vardir = c("v1", "v12", "v13", "v2", "v23", "v3")
+#' weight = c("w1", "w2", "w3")
+#'
+#' est_msae = est_msaeRB(Fo, vardir, weight, data = datamsaeRB)
+#'
+#' ## Without parameter 'data'
+#' Fo = list(f1 = datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2,
+#'           f2 = datamsaeRB$Y2 ~ datamsaeRB$X1 + datamsaeRB$X2,
+#'           f3 = datamsaeRB$Y3 ~ datamsaeRB$X1 + datamsaeRB$X2)
+#' vardir = datamsaeRB[, c("v1", "v12", "v13", "v2", "v23", "v3")]
+#' weight = datamsaeRB[, c("w1", "w2", "w3")]
+#'
+#' est_msae = est_msaeRB(Fo, vardir, weight)
+#'
+#' ## Return
+#' est_msae$eblup$est.eblupRB # to see the Ratio Benchmark estimators
+#'
 est_msaeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, PRECISION = 1E-04, data) {
   r = length(formula)
   if (r <= 1)
