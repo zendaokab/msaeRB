@@ -12,6 +12,7 @@ RoxygenNote: 7.1.1
 URL: https://github.com/zendaokab/msaeRB
 BugReports: https://github.com/zendaokab/msaeRB/issues
 Suggests: 
+    covr,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
