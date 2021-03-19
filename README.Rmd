@@ -3,6 +3,7 @@ output: github_document
 ---
 
 [![Travis build status](https://travis-ci.com/zendaokab/msaeRB.svg?branch=main)](https://travis-ci.com/zendaokab/msaeRB)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/zendaokab/msaeRB?branch=main&svg=true)](https://ci.appveyor.com/project/zendaokab/msaeRB)
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
