@@ -2,6 +2,8 @@
 output: github_document
 ---
 
+[![Travis build status](https://travis-ci.com/zendaokab/msaeRB.svg?branch=main)](https://travis-ci.com/zendaokab/msaeRB)
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 ```{r, include = FALSE}
