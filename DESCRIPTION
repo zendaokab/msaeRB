@@ -1,0 +1,11 @@
+Package: msaeRB
+Type: Package
+Title: Ratio Benchmarking for Multivariate Small Area Estimation
+Version: 0.1.0
+Author: Zenda Oka Briantiko, Azka Ubaidillah
+Maintainer: Zenda Oka Briantiko <221710087@stis.ac.id>
+Description: Implements multivariate ratio benchmarking Small Area Estimation. This package provides ratio benchmarking estimation for univariate and multivariate Small Area Estimation and its MSE. In fact, MSE estimators for ratio renchmark are not readily available, so resampling method that called parametric bootstrap is applied. The ratio benchmark model and parametric bootstrap in this package are based on the model proposed in Small Area Estimaton (J.N.K Rao and Isabel Molina, 2015). 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
