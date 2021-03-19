@@ -3,16 +3,26 @@
 #' @description Calculates the parametric bootstrap mean squared error estimates of ratio benchmarking for multivariate small area estimation
 #'
 #' @param formula an object of class list of formula describe the fitted models
-#' @param vardir matrix containing sampling variances of direct estimators. The order is: 'var1, cov12, ..., cov1r, var2, cov23, ..., cov2r, ..., cov(r-1)(r), var(r)'
-#' @param weight matrix containing proportion of units in small areas. The order is: 'w1, w2, ..., w(r)'
-#' @param samevar logical. If TRUE, the varians is same. Default is FALSE
+#' @param vardir matrix containing sampling variances of direct estimators. The order is: \code{var1, cov12, ..., cov1r, var2, cov23, ..., cov2r, ..., cov(r-1)(r), var(r)}
+#' @param weight matrix containing proportion of units in small areas. The order is: \code{w1, w2, ..., w(r)}
+#' @param samevar logical. If \code{TRUE}, the varians is same. Default is \code{FALSE}
 #' @param B number of bootstrap. Default is 1000
 #' @param MAXITER maximum number of iterations for Fisher-scoring. Default is 100
-#' @param PRECISION coverage tolerance limit for the Fisher Scoring algorithm. Default value is 1E-4
+#' @param PRECISION coverage tolerance limit for the Fisher Scoring algorithm. Default value is \code{1e-4}
 #' @param data dataframe containing the variables named in formula, vardir, and weight
 #'
-#' @return dataframe
-#' @export
+#' @return
+#' \item{mse.eblup}{estimated mean squared errors of the EBLUPs for the small domains based on Prasad Rao}
+#' \item{pbmse.eblupRB}{parametric bootstrap mean squared error estimates of the ratio benchmark}
+#' \item{running.time}{time for running function}
+#'
+#' @export mse_msaeRB
+#'
+#' @import abind
+#' @importFrom magic adiag
+#' @importFrom Matrix forceSymmetric
+#' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
+#' @importFrom MASS mvrnorm
 mse_msaeRB = function (formula, vardir, weight, samevar = FALSE, B = 1000, MAXITER = 100, PRECISION = 1E-04, data) {
     start_time <- Sys.time()
     r = length(formula)

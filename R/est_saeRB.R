@@ -5,13 +5,35 @@
 #' @param formula an object of class list of formula describe the fitted model
 #' @param vardir vector containing sampling variances of direct estimators
 #' @param weight vector containing proportion of units in small areas
-#' @param samevar logical. If TRUE, the varians is same. Default is FALSE
+#' @param samevar logical. If \code{TRUE}, the varians is same. Default is \code{FALSE}
 #' @param MAXITER maximum number of iterations for Fisher-scoring. Default is 100
-#' @param PRECISION coverage tolerance limit for the Fisher Scoring algorithm. Default value is 1E-4
+#' @param PRECISION coverage tolerance limit for the Fisher Scoring algorithm. Default value is \code{1e-4}
 #' @param data dataframe containing the variables named in formula, vardir, and weight
 #'
-#' @return dataframe
-#' @export
+#' @return This function returns a list with following objects:
+#' \item{eblup}{a list containing a value of estimators}
+#' \itemize{
+#'   \item est.eblup : a dataframe containing EBLUP estimators
+#'   \item est.eblupRB : a dataframe containing ratio benchmark estimators
+#' }
+#'
+#' \item{fit}{a list contining following objects:}
+#' \itemize{
+#'   \item method : fitting method, named "REML"
+#'   \item convergence : logical value of convergence of Fisher Scoring
+#'   \item iterations : number of iterations of Fisher Scoring algorithm
+#'   \item estcoef : a data frame containing estimated model coefficients (\code{beta, std. error, t value, p-value})
+#'   \item refvar : estimated random effect variance
+#' }
+#'
+#' \item{agregation}{a data frame containing agregation of direct, EBLUP, and ratio benchmark estimation}
+#' @export est_saeRB
+#'
+#' @import abind
+#' @importFrom magic adiag
+#' @importFrom Matrix forceSymmetric
+#' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
+#' @importFrom MASS mvrnorm
 est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, PRECISION = 1E-04, data) {
   if (!is.list(formula))
     formula = list(formula)
@@ -119,6 +141,7 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
     coef = as.matrix(cbind(beta, se.b, t.value, p.value))
     colnames(coef) = c("beta", "std. error", "t value", "p-value")
     rownames(coef) = colnames(X)
+    coef = as.data.frame(coef)
   } else {
     Vu = apply(matrix(diag(R), nrow = n, ncol = r), 2, median)
     k = 0
@@ -169,6 +192,7 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
     coef = as.matrix(cbind(beta, se.b, t.value, p.value))
     colnames(coef) = c("beta", "std. error", "t value", "p-value")
     rownames(coef) = colnames(X)
+    coef = as.data.frame(coef)
   }
   y.mat = matrix(y, nrow = n, ncol = r)
   eblup.mat = as.matrix(eblup)
@@ -180,6 +204,7 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
   agregation.eblup.ratio = diag(t(W) %*% as.matrix(eblup.ratio))
   agregation = as.matrix(rbind(agregation.direct, agregation.eblup, agregation.eblup.ratio))
   colnames(agregation) = y_names
+  agregation = as.data.frame(agregation)
   result = list(eblup = list(est.eblup = NA, est.eblupRB = NA), fit = list(method = NA, convergence = NA, iteration = NA, estcoef = NA, refvar = NA), agregation = NA)
   result$eblup$est.eblup = eblup
   result$eblup$est.eblupRB = eblup.ratio

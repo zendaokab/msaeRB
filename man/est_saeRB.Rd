@@ -21,16 +21,32 @@ est_saeRB(
 
 \item{weight}{vector containing proportion of units in small areas}
 
-\item{samevar}{logical. If TRUE, the varians is same. Default is FALSE}
+\item{samevar}{logical. If \code{TRUE}, the varians is same. Default is \code{FALSE}}
 
 \item{MAXITER}{maximum number of iterations for Fisher-scoring. Default is 100}
 
-\item{PRECISION}{coverage tolerance limit for the Fisher Scoring algorithm. Default value is 1E-4}
+\item{PRECISION}{coverage tolerance limit for the Fisher Scoring algorithm. Default value is \code{1e-4}}
 
 \item{data}{dataframe containing the variables named in formula, vardir, and weight}
 }
 \value{
-dataframe
+This function returns a list with following objects:
+\item{eblup}{a list containing a value of estimators}
+\itemize{
+  \item est.eblup : a dataframe containing EBLUP estimators
+  \item est.eblupRB : a dataframe containing ratio benchmark estimators
+}
+
+\item{fit}{a list contining following objects:}
+\itemize{
+  \item method : fitting method, named "REML"
+  \item convergence : logical value of convergence of Fisher Scoring
+  \item iterations : number of iterations of Fisher Scoring algorithm
+  \item estcoef : a data frame containing estimated model coefficients (\code{beta, std. error, t value, p-value})
+  \item refvar : estimated random effect variance
+}
+
+\item{agregation}{a data frame containing agregation of direct, EBLUP, and ratio benchmark estimation}
 }
 \description{
 This function gives EBLUPs ratio benchmarking based on univariate Fay-Herriot (model 1)

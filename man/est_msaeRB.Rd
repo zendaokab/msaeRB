@@ -17,20 +17,36 @@ est_msaeRB(
 \arguments{
 \item{formula}{an object of class list of formula describe the fitted models}
 
-\item{vardir}{matrix containing sampling variances of direct estimators. The order is: 'var1, cov12, ..., cov1r, var2, cov23, ..., cov2r, ..., cov(r-1)(r), var(r)'}
+\item{vardir}{matrix containing sampling variances of direct estimators. The order is: \code{var1, cov12, ..., cov1r, var2, cov23, ..., cov2r, ..., cov(r-1)(r), var(r)}}
 
-\item{weight}{matrix containing proportion of units in small areas. The order is: 'w1, w2, ..., w(r)'}
+\item{weight}{matrix containing proportion of units in small areas. The order is: \code{w1, w2, ..., w(r)}}
 
-\item{samevar}{logical. If TRUE, the varians is same. Default is FALSE}
+\item{samevar}{logical. If \code{TRUE}, the varians is same. Default is \code{FALSE}}
 
 \item{MAXITER}{maximum number of iterations for Fisher-scoring. Default is 100}
 
-\item{PRECISION}{coverage tolerance limit for the Fisher Scoring algorithm. Default value is 1E-4}
+\item{PRECISION}{coverage tolerance limit for the Fisher Scoring algorithm. Default value is \code{1e-4}}
 
 \item{data}{dataframe containing the variables named in formula, vardir, and weight}
 }
 \value{
-dataframe
+This function returns a list with following objects:
+\item{eblup}{a list containing a value of estimators}
+\itemize{
+  \item est.eblup : a dataframe containing EBLUP estimators
+  \item est.eblupRB : a dataframe containing ratio benchmark estimators
+}
+
+\item{fit}{a list contining following objects:}
+\itemize{
+  \item method : fitting method, named "REML"
+  \item convergence : logical value of convergence of Fisher Scoring
+  \item iterations : number of iterations of Fisher Scoring algorithm
+  \item estcoef : a data frame containing estimated model coefficients (\code{beta, std. error, t value, p-value})
+  \item refvar : estimated random effect variance
+}
+
+\item{agregation}{a data frame containing agregation of direct, EBLUP, and ratio benchmark estimation}
 }
 \description{
 This function gives EBLUPs ratio benchmarking based on multivariate Fay-Herriot (Model 1)
