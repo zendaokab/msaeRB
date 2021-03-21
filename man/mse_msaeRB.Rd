@@ -42,6 +42,7 @@ Calculates the parametric bootstrap mean squared error estimates of ratio benchm
 }
 \examples{
 \dontrun{
+# You can still run this example. Because of the long time example, so i added the "dontrun" code
 ## load dataset
 data(datamsaeRB)
 
