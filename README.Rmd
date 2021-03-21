@@ -51,4 +51,4 @@ Zenda Oka Briantiko <221710087@stis.ac.id>
 * Ubaidillah, Azka et al. (2019). Multivariate Fay-Herriot models for small area estimation with application to household consumption per capita expenditure in Indonesia. Journal of Applied Statistics. 46:15. 2845-2861. DOI: 10.1080/02664763.2019.1615420.
 * Datta, G.S., Day, B., and Maiti, T. (1998), Multivariate Bayesian Small Area Estimation: An Application to Survey and Satellite Data, Sankhy¯a, Series A, 60, 1–19. 
 * Wang, J., Fuller, W.A., and Qu, Y. (2008). Small Area Estimation Under Restriction, Survey Methodology, 34, 29–36 
-* Małgorzata Karolina Krzciu (2017). On the Simulation Study of Jackknife and Bootstrap MSE Estimators of a Domain Mean Predictor for Fay‑Herriot Model. DOI: http://dx.doi.org/10.18778/0208‑6018.331.11
+* Małgorzata Karolina Krzciu (2017). On the Simulation Study of Jackknife and Bootstrap MSE Estimators of a Domain Mean Predictor for Fay‑Herriot Model. DOI: https://doi.org/10.18778/0208-6018.331.11
