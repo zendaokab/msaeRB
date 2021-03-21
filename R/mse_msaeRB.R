@@ -25,11 +25,12 @@
 #' @importFrom MASS mvrnorm
 #'
 #' @examples
+#' \dontrun{
 #' ## load dataset
 #' data(datamsaeRB)
 #'
 #' # Compute MSE EBLUP and Ratio Benchmark
-#'
+#' # This is the long running example
 #' ## Using parameter 'data'
 #' Fo = list(f1 = Y1 ~ X1 + X2,
 #'           f2 = Y2 ~ X1 + X2,
@@ -50,7 +51,7 @@
 #'
 #' ## Return
 #' mse_msae$pbmse.eblupRB # to see the MSE of Ratio Benchmark
-#'
+#' }
 mse_msaeRB = function (formula, vardir, weight, samevar = FALSE, B = 1000, MAXITER = 100, PRECISION = 1E-04, data) {
     start_time <- Sys.time()
     r = length(formula)

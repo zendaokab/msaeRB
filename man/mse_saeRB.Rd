@@ -41,6 +41,7 @@ mse_saeRB(
 Calculates the parametric bootstrap mean squared error estimates of ratio benchmarking for univariate small area estimation
 }
 \examples{
+\dontrun{
 ## load dataset
 data(datamsaeRB)
 
@@ -54,5 +55,5 @@ mse_sae = mse_saeRB(datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2, datamsaeRB$v1
 
 ## Return
 mse_sae$pbmse.eblupRB # to see the MSE Ratio Benchmark estimators
-
+}
 }

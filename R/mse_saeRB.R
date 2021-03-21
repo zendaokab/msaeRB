@@ -25,6 +25,7 @@
 #' @importFrom MASS mvrnorm
 #'
 #' @examples
+#' \dontrun{
 #' ## load dataset
 #' data(datamsaeRB)
 #'
@@ -38,7 +39,7 @@
 #'
 #' ## Return
 #' mse_sae$pbmse.eblupRB # to see the MSE Ratio Benchmark estimators
-#'
+#' }
 mse_saeRB = function(formula, vardir, weight, samevar = FALSE, B = 1000, MAXITER = 100, PRECISION = 1E-04, data) {
   start_time <- Sys.time()
   if (!is.list(formula))
