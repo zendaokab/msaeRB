@@ -65,5 +65,4 @@ Zenda Oka Briantiko <221710087@stis.ac.id>
     Under Restriction, Survey Methodology, 34, 29–36
   - Małgorzata Karolina Krzciu (2017). On the Simulation Study of
     Jackknife and Bootstrap MSE Estimators of a Domain Mean Predictor
-    for Fay‑Herriot Model. DOI:
-    <http://dx.doi.org/10.18778/0208‑6018.331.11>
+    for Fay‑Herriot Model. DOI: https://doi.org/10.18778/0208-6018.331.11
