@@ -1,7 +1,7 @@
 Package: msaeRB
 Type: Package
 Title: Ratio Benchmarking for Multivariate Small Area Estimation
-Version: 0.1.1
+Version: 0.1.2
 Authors@R: c(person("Zenda", "Oka", "Briantiko", role = c("aut", "cre"), email = "221710087@stis.ac.id"),
             person("Azka", "Ubaidillah", role = "aut"))
 Maintainer: Zenda Oka Briantiko <221710087@stis.ac.id>
