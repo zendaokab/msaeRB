@@ -1,9 +1,9 @@
 ---
-title: "Vignette"
+title: "Vignette_msaeRB"
 author: "Zenda Oka Briantiko"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette}
+  %\VignetteIndexEntry{Vignette_msaeRB}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
