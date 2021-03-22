@@ -41,8 +41,7 @@ mse_saeRB(
 Calculates the parametric bootstrap mean squared error estimates of ratio benchmarking for univariate small area estimation
 }
 \examples{
-\dontrun{
-# You can still run this example. Because of the long time example, so i added the "dontrun" code
+\donttest{
 ## load dataset
 data(datamsaeRB)
 
