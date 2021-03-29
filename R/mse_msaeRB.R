@@ -287,7 +287,6 @@ mse_msaeRB = function (formula, vardir, weight, samevar = FALSE, B = 1000, MAXIT
     sumg1.pb = rep(0, n*r)
     sumg2.pb = rep(0, n*r)
     sumg3.pb = rep(0, n*r)
-    cat("\nBootstrap procedure with B =", B, "iterations starts.\n")
     boot <- 1
     while (boot <= B) {
         u.boot = mvrnorm(n = n, mu = rep(0, r), Sigma = (diag(as.vector(A), nrow = r, ncol = r)))
@@ -328,7 +327,6 @@ mse_msaeRB = function (formula, vardir, weight, samevar = FALSE, B = 1000, MAXIT
         sumg3.pb = sumg3.pb + as.vector(g3boot)
         boot = boot + 1
     }
-    cat("\nBootstrap procedure with B =", B, "iterations ends.\n")
     g1.pb = sumg1.pb/B
     g2.pb = sumg2.pb/B
     g3.pb = sumg3.pb/B
