@@ -25,7 +25,7 @@
 #'   \item estcoef : a data frame containing estimated model coefficients (\code{beta, std. error, t value, p-value})
 #'   \item refvar : estimated random effect variance
 #' }
-#'
+#' \item{random.effect}{a data frame containing values of random effect estimators}
 #' \item{agregation}{a data frame containing agregation of direct, EBLUP, and ratio benchmark estimation}
 #' @export est_saeRB
 #'
@@ -210,6 +210,8 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
     rownames(coef) = colnames(X)
     coef = as.data.frame(coef)
   }
+  random.effect = data.frame(matrix(Gn %*% Vinv %*% res, n, r))
+  names(random.effect) = y_names
   y.mat = matrix(y, nrow = n, ncol = r)
   eblup.mat = as.matrix(eblup)
   eblup.ratio = eblup.mat %*% (colSums(W * y.mat)/colSums(W * eblup.mat))
@@ -221,7 +223,7 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
   agregation = as.matrix(rbind(agregation.direct, agregation.eblup, agregation.eblup.ratio))
   colnames(agregation) = y_names
   agregation = as.data.frame(agregation)
-  result = list(eblup = list(est.eblup = NA, est.eblupRB = NA), fit = list(method = NA, convergence = NA, iteration = NA, estcoef = NA, refvar = NA), agregation = NA)
+  result = list(eblup = list(est.eblup = NA, est.eblupRB = NA), fit = list(method = NA, convergence = NA, iteration = NA, estcoef = NA, refvar = NA), random.effect = NA, agregation = NA)
   result$eblup$est.eblup = eblup
   result$eblup$est.eblupRB = eblup.ratio
   result$fit$method = "REML"
@@ -229,6 +231,7 @@ est_saeRB = function (formula, vardir, weight, samevar = FALSE, MAXITER = 100, P
   result$fit$iteration = k
   result$fit$estcoef = coef
   result$fit$refvar = t(Vu)
+  result$random.effect = random.effect
   result$agregation = agregation
   return(result)
 }

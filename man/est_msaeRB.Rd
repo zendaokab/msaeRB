@@ -45,7 +45,7 @@ This function returns a list with following objects:
   \item estcoef : a data frame containing estimated model coefficients (\code{beta, std. error, t value, p-value})
   \item refvar : estimated random effect variance
 }
-
+\item{random.effect}{a data frame containing values of random effect estimators}
 \item{agregation}{a data frame containing agregation of direct, EBLUP, and ratio benchmark estimation}
 }
 \description{
