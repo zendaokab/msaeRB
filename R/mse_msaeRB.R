@@ -21,8 +21,8 @@
 #' @import abind
 #' @importFrom magic adiag
 #' @importFrom Matrix forceSymmetric
-#' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm
-#' @importFrom MASS mvrnorm
+#' @importFrom stats model.frame na.omit model.matrix median pnorm rnorm cor
+#' @importFrom MASS mvrnorm ginv
 #'
 #' @examples
 #' \donttest{
