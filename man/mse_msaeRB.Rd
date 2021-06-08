@@ -63,7 +63,7 @@ Fo = list(f1 = datamsaeRB$Y1 ~ datamsaeRB$X1 + datamsaeRB$X2,
 vardir = datamsaeRB[, c("v1", "v12", "v13", "v2", "v23", "v3")]
 weight = datamsaeRB[, c("w1", "w2", "w3")]
 
-mse_msae = est_msaeRB(Fo, vardir, weight)
+mse_msae = mse_msaeRB(Fo, vardir, weight)
 
 ## Return
 mse_msae$pbmse.eblupRB # to see the MSE of Ratio Benchmark
