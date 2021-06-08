@@ -43,6 +43,10 @@ Zenda Oka Briantiko <221710087@stis.ac.id>
 * mse_saeRB : Parametric Bootstrap Mean Squared Error Estimators of Ratio Benchmarking for Univariate Small Area Estimation
 * est_msaeRB : Produces EBLUPs Ratio Benchmarking based on a Multivariate Fay-Herriot (Model 1)
 * mse_msaeRB : Parametric Bootstrap Mean Squared Error Estimators of Ratio Benchmarking for Multivariate Small Area Estimation
+* est_saeRBns : Produces EBLUPs Ratio Benchmarking for Non Sampled Area based on a Univariate Fay-Herriot (Model 1)
+* mse_saeRBns : Parametric Bootstrap Mean Squared Error Estimators of Ratio Benchmarking for Univariate Non Sampled Area in Small Area Estimation
+* est_msaeRBns : Produces EBLUPs Ratio Benchmarking for Non Sampled Area based on a Multivariate Fay Herriot (Model 1)
+* mse_msaeRBns : Parametric Bootstrap Mean Squared Error Estimators of Ratio Benchmarking for Multivariate Non Sampled Area in Small Area Estimation
 
 ## References
 
